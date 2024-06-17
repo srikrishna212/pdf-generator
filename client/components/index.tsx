@@ -1,6 +1,11 @@
 'use client'
 
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
+import {
+    Button,
+    Stack,
+    Paper
+  } from '@mui/material'
 import { FormEvent, useState } from "react";
 import saveAs from 'file-saver'
 
@@ -57,16 +62,22 @@ const PdfViewer = () => {
             cols={50}
             placeholder="Enter your prompt here"
         ></textarea>
-        <br />
-        <button type="submit">Generate</button>
-         <br/>     
-        <button type="button" onClick={handleDownload}>Download PDF</button>
+
+        <Stack direction='row' spacing={1}>
+           <Button type="submit">
+             Generate
+            </Button>
+            <Button onClick={handleDownload}>
+            Download PDF
+            </Button>  
+        </Stack>
+       
     </form>
     {result && (
-        <div>
+        <Paper sx={{p: 4}}>
             <h2>Result:</h2>
             <p>{result}</p>
-        </div>
+        </Paper>
     )}
 </div>
 
